@@ -24,10 +24,13 @@ case $choice in
       ;;
    2) echo "enter the file name:"
       read fname
+      echo -n "enter the seperate file name to store character and their occurences:"
+      read sep
       largest=0
       for ch in {a..z}
       do 
          echo "$ch - `grep -io "$ch" $fname | wc -l`"
+         echo "$ch - `grep -io "$ch" $fname | wc -l`">>$sep
          chcount=`grep -io "$ch" $fname | wc -l`
          if [[ $chcount -ge $largest ]]
          then
