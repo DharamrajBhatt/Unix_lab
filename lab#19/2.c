@@ -5,21 +5,22 @@ void main(){
 	int p[2],i,j,pid;
 	char str[10][10],temp[10];
 	printf("\n");
-	printf("Enter strings:");
+	printf("Enter strings:");//taking strings from the user
 	for(i=0;i<10;i++){
 		scanf("%s",str[i]);
 	}
 
-	pipe(p);
-	pid=fork();
-	if(pid==0){
-		for(i=0;i<10;i++)
-			write(p[1],str[i],10);
+	pipe(p);//creating pipe
+	pid=fork();//system call(process cration)
+	if(pid==0){      //child process
+			for(i=0;i<10;i++)
+			write(p[1],str[i],10); //writing the string in end of pipe(p[1])
 	}
-	else{
+	else{//parent process
 		for(i=0;i<10;i++){
-		read(p[0],str[i],10);
+		read(p[0],str[i],10);//reading the string from pipe(p[0])
 	}
+	//this part will sort the string in ascendind order
 	for(i=0;i<10;i++){
 		for(j=0;j<10;j++){
 			if(strcmp(str[j],str[j+1])>0){
@@ -29,6 +30,7 @@ void main(){
 			}
 		}
 	}
+	///printing the strings
 	printf("\n");
 	printf("strings in sorted order:");
 	for(i=0;i<10;i++){
@@ -37,3 +39,4 @@ void main(){
 	printf("\n\n");
 }
 }
+
