@@ -4,7 +4,7 @@ echo "Input employee details"
 echo "Do you want to add more employees? if yes press 1 , if no press 0"
 read c
 while [ $c -eq 1 ]
-do
+do 
 echo "Enter the name: "
 read name
 flag=1
@@ -54,7 +54,7 @@ print "Details of employee with id ",empid
 print "Name\t\t: ",$1
 print "Department\t: ",$3
 print "Designation\t: ",$4
-printf "Basic pay\t: %.2f\n",$5
+printf "Basic pay\t: %.2f\n",$5 
 da=$5 * 0.45
 printf "DA\t\t: %.2f\n",da
 hra=$5 * .12
